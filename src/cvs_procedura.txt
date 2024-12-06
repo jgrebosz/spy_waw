@@ -1,0 +1,192 @@
+/d/rising02/jun_jul_06/data/130Cd_1_0162.lmd
+/d/rising02/jun_jul_06/data/130Cd_1_0163.lmd
+/d/rising02/jun_jul_06/data/130Cd_1_0164.lmd
+/d/rising02/jun_jul_06/data/130Cd_1_0165.lmd
+/d/rising02/jun_jul_06/data/130Cd_1_0166.lmd
+
+/d/rising02/jun_jul_06/calib/FN533Ba133_7m_P200_z3x0y00068.lmd 
+/d/rising02/jun_jul_06/calib/FN533Ba133_7m_P200_z3x0y00069.lmd 
+
+===========================================================
+1. Najpierw stworzylem puste Repozytorium
+
+cvs -d repository init 
+
+gdzie repository jest pelna sciezka z nazwa danego repozytorium
+
+Np.
+
+ cvs -d /d/kp2/grebosz/repoz/rep_spy2 init
+
+==========================================================
+2. Potem importowalem tam projekt
+
+cvs -d repository import -m "komentarz" spy grebosz spy_01 
+
+gdzie:
+ 
+- spy to "modul" - nazwa programuu. Pod ta nazwa chowamy to w repozytorium. 
+Potem gdy zrobimy wyjecie - wytworzy to osobny pod katalog (tak wlasnie 
+nazwany) z zawartoscia bedaca zrodlami programu
+
+- grebosz to vendor. Nie wazne, radza by dawac username
+
+- spy_01 to tag - jednowyrazowy opis wersji lub np start
+
+// Z manuala CVS (online)
+If some of the files you want to import are binary, you may want 
+to use the wrappers features to specify which files are binary 
+and which are not
+
+Wrapper to po prostu opcja W
+
+The basic format of the file `cvswrappers' is: 
+
+      wildcard     [option value][option value]...
+
+
+      where option is one of
+      -m           update methodology      value: MERGE or COPY
+      -k           keyword expansion       value: expansion mode
+
+
+      and value is a single-quote delimited value.
+
+
+
+For example, the following command imports a directory, treating 
+files whose name ends in `.exe' as binary: 
+
+ cvs import -I ! -W "*.exe -k 'b'" first-dir vendortag reltag
+
+      
+      
+      
+=============================================================
+3. Teraz trzeba to po raz pierwszy wyjac do nowego katalogu
+a o starym - od tej pory zapomniec!
+
+
+
+cvs -d repository   checkout spy 
+
+cvs -d repository  checkout -D yesterday spy
+
+
+Od tej pory wydawane komendy beda juz wiedzialy o ktore repozytorium chodzi,
+bo jest tu okreslajacy takie sprawy podkatalog CVS
+
+-----------------------
+Wyjmowanie przez siec czyli z odleglego repozytorium
+
+ cvs -d :ext:grebosz@lxg1004.gsi.de/d/kp2/grebosz/repoz/rep_spy checkout spydir
+
+ Potem zostaje zapytany o haslo
+ To dziala dla mojego laptopa!
+ Probowalem zarowno cracow jak i spy
+ 
+
+
+==============================================================
+4. Wyjecie jednego pliku, ktory ktos moze w miedzyczasie modyfikowal.
+
+cvs update -C file.cxx   // <-- na laptopie to C nie jest potrzebne, ale w GSI tak!!!!
+
+cvs update -C
+
+- daje nam wyjecie wszystkich, ktore ewentualnie sie zmienialy
+
+cvs -ng update 
+
+- tylko nas informuje ktore ewetnualnie by byly wyjete
+
+
+Opcja -C powoduje naprawde wyjecie, a nie tylko zaznaczenie gdzie sa zmiany
+(taki zaznaczenie powoduje, ze pliki sie nie dadza skompilowac).
+
+------------
+USUWANIE
+usuwanie - trwale wielu plikow z repozytorium
+Jeden plik:
+
+  cvs remove filename1 filename2 filename   <--- usuwa z dysku i z rejestracji
+  cvs commit filename    -m "komentarz" <-- ostatecznie dopelnia sprawy
+
+Wiele plikow czyli z gwiazdka
+
+  cvs remove -f *.mon                      <-- sciezka z gwiazdkami (usuwa z dysku i rejestracji)
+  cvs commit  -m "Jakis komentarz"  <--- ostatecznie
+
+
+( -f nie zadziala jesli pliki juz wczesniej usunelismy z naszego katalogu. Wtedy trzeba bez gwiazdek i -f
+recznie podawac nazwy).
+
+==============================================================
+5. Jesli my modyfikowalismy, mozemy nowa wersje wlozyc do
+repozytorium 
+
+cvs commit -m "komentarz" file.cxx
+
+jesli nie wyspecyfikuje sie zadnego pliku - wszystkie zostana sprawdzone.
+
+cvs commit
+
+
+=============
+UWAGA1: Czasem mowi ze impossible, up-to-date problem. 
+Wynika to czesto z tego,
+ze kopiowalem za pomoca 'tar' cale directory z laptopa na stacjonarny komputer GSI.
+Tar skopiowal tez zawartosc podkatalogow CVS - czyli znszczyl poprzedni zapis.
+Najlepiej wiec roztarowywac selektywnie. To znaczy nie roztarowywac podkatalogow CVS,
+wtedy nie bedzie problemu.
+
+
+
+===========
+UWAGA: Jesli w miedzyczasie stworzymy jakis zupelnie nowy plik, to 
+ta ostatnia komenda go nie uwzgledni automatycznie. Powinnismy go 
+najpierw po raz pierwszy dodac recznie komenda:
+
+cvs add [-kb] -m"komentarz" file.cxx
+
+gdzie -kb jest ewentualna opcja jesli plik jest binarny (np ikona).
+
+jesli to plik binarny:
+
+cvs -
+
+ALE: ta komenda nie dodaje pliku tylko dodaje jego "rejestracje". Gdy
+juz jest znany w repozytorium, mozemy zdobic commit - i ta komenda
+naprawde wklada tresc pliku do repozytorium
+
+
+====================================================================
+Co zrobic jesli plik binarny zostal przez pomylke zlozony w repozytorium
+jako tekstowy
+====================================================================
+If a file accidentally gets added without `-kb', one can use the `cvs admin' 
+command to recover. For example: 
+
+      $ echo '$Id: cvs_procedura.txt,v 1.4 2007/07/30 14:29:07 grebosz Exp $' > kotest    <-- prosta komenda tworzaca plik binarny
+      $ cvs add -m"A test file" kotest    <--- bledne dodanie (rejestracja) bez opcji binarnej 
+      $ cvs ci -m"First checkin; contains a keyword" kotest <---wlasciwe zlozenie w repozytorium
+      $ cvs admin -kb kotest         // <-- naprawa, danie opcji binarnej 
+      $ cvs update -A kotest
+
+Opcja -A oznacza 
+      Reset any sticky tags, dates, or `-k' options.  See  Sticky
+      tags, for more information on sticky tags/dates.      
+
+
+ When you check in the file `kotest' the file is not preserved as a binary file, 
+ because you did not check it in as a binary file. The `cvs admin -kb' 
+ command sets the default keyword substitution method for this file, 
+ but it does not alter the working copy of the file that you have. 
+ On unix, the `cvs update -A' command suffices. (Note that you can 
+ use `cvs log' to determine the default keyword substitution method 
+ for a file and `cvs status' to determine the keyword substitution 
+ method for a working copy.)
+
+
+ 
+ 

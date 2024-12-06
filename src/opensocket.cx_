@@ -1,0 +1,166 @@
+
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+
+//#include <stdio.h>
+//#include <stdlib.h>
+#include <unistd.h>
+#include <errno.h>
+#include <string.h>
+#include <netdb.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+
+#include "i2o.h"
+
+#define SUCCESS 0
+#define ERROR   1
+
+#define MAXDATASIZE 262144
+
+int reads ( int sd, char *buf, int maxb );
+//*************************************************************************
+int exotic_open_socket ( string host, string port_txt )
+{
+    int sockfd;
+    struct hostent *he;
+    struct sockaddr_in their_addr;
+    struct sockaddr_in l_addr;
+    char *hostname;
+    int port;
+    int sock_opt = 1;
+    int nread;
+
+    char buf[MAXDATASIZE];
+    char buf_header[sizeof ( I2O_SEND_TO_BU_MESSAGE_FRAME ) ];
+    I2O_SEND_TO_BU_MESSAGE_FRAME *i2omsg;
+    int buf_sz;
+    int data_sz;
+    int orgid;
+
+    int *w1;
+
+
+    hostname = host.c_str();
+    port = atoi ( port_txt );
+
+    if ( ( sockfd = socket ( PF_INET, SOCK_STREAM, 0 ) ) == -1 )
+    {
+        perror ( "socket" );
+        exit ( 1 );
+    }
+
+    l_addr.sin_family = PF_INET;
+    l_addr.sin_port = htons ( 0 );
+    l_addr.sin_addr.s_addr = htonl ( INADDR_ANY );
+    memset ( & ( l_addr.sin_zero ), '\0', 8 );
+
+    if ( setsockopt ( sockfd, SOL_SOCKET, SO_REUSEADDR, &sock_opt, sizeof ( int ) ) == -1 )
+    {
+        perror ( "setsockopt" );
+        exit ( 1 );
+    }
+
+    if ( bind ( sockfd, ( struct sockaddr * ) &l_addr, sizeof ( struct sockaddr ) ) == -1 )
+    {
+        perror ( "bind" );
+        exit ( 1 );
+    }
+
+    cout << " Przed  gehost by name\n"  << endl;
+
+    if ( ( he=gethostbyname ( hostname ) ) == NULL )
+    {
+        perror ( "gethostbyname" );
+        exit ( 1 );
+    }
+    cout << "success w gehost by name\n"  << endl;
+
+    their_addr.sin_family = PF_INET;
+    their_addr.sin_port = htons ( port );
+    their_addr.sin_addr = * ( ( struct in_addr * ) he->h_addr );
+    memset ( & ( their_addr.sin_zero ), '\0', 8 );
+
+    if ( connect ( sockfd, ( struct sockaddr * ) &their_addr, sizeof ( struct sockaddr ) ) == -1 )
+    {
+        perror ( "connect jurek" );
+        exit ( 1 );
+    }
+
+}
+//********************************************************************************************************************************************************************
+void get_next_buffer()
+{
+// sequence or reading
+//     for ( ;; )
+    {
+        /* receive header */
+//        cout << "Reading the HEADER " << endl;
+        if ( ( nread = reads ( sockfd, buf_header, sizeof ( I2O_SEND_TO_BU_MESSAGE_FRAME ) ) ) == ERROR )
+            break;
+
+        printf ( "receive header        nread: %d\n", nread );
+
+        i2omsg = ( I2O_SEND_TO_BU_MESSAGE_FRAME * ) buf_header;
+
+        buf_sz = i2omsg->PvtMessageFrame.StdMessageFrame.MessageSize << 2;
+
+        cout <<  "buf_sz: = " <<  buf_sz << endl;
+
+        data_sz = buf_sz - sizeof ( I2O_SEND_TO_BU_MESSAGE_FRAME );
+
+        /* receive data ----------------------------------------------------------------------------------*/
+        cout << "Reading the DATA " << endl;
+        if ( ( nread = reads ( sockfd, buf, data_sz ) ) == ERROR )
+            break;
+        if(nread >0)
+        {
+            cout << "afer 'reads DATA ' the return value is nread =" << nread << endl ;
+        }
+    }
+}
+//*************************************************
+void close_exotic_socket()
+{
+    // closing the socket
+    close ( sockfd );
+ //   return 0;
+}
+
+//***************************************************************************
+int reads ( int sd, char *buf, int maxb )
+{
+    int nleft;
+    int nread;
+    nleft = maxb;
+
+    while ( nleft > 0 )
+    {
+        nread = recv ( sd, buf, nleft, 0 );
+        if ( nread < 0 )
+        {
+            perror ( " Cannot receive data " );
+            return ERROR;
+        }
+        else if ( nread == 0 )
+        {
+            cout <<  " Connection closed by client\n"  << endl;
+            return ERROR;
+        }
+        cout << "recv:  nread = " << nread << endl;
+        nleft -= nread;
+        buf += nread;
+    }
+    cout << "end of function, return value =  " << ( maxb - nleft ) << "---------------------------------------------------" << endl;
+    return ( maxb - nleft ); /* return >= 0 */    // how many bytes are read
+}
+

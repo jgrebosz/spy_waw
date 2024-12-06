@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/MFMtest.dir/sources/MFMtest.cc.o  -o MFMtest -Wl,-rpath,/home/grebosz/zro/waw/moj_diamant/mfm: libMFM_Diamant.so 

@@ -1,0 +1,183 @@
+The spectra of paritcular detectors are called
+
+There are 8 strip detectors. Their symbols are A, B,C,D,E,F,G,H
+Each of them has 32 strips. Their numbers are  00, 01, 02, ...., 29, 30, 31
+Each strip gets 8 samples. Their aritmetic mean value is called energy raw.
+
+ You can watch the spectra of these "energy raw" by selecting from the list.
+
+strip_detectorA_plate_x_00_energy_raw.spc
+strip_detectorG_plate_x_12_energy_raw.spc
+
+By this you will see
+
+1) the spectrum of the Strip detector A, channel (strip) nr 00
+1) the spectrum of the Strip detector G, channel (strip) nr 12
+
+You may calibrate these raw values. The calibration factors are placed in the
+file called   calibration/strip_detector_calibration.txt
+Its contents is for example:
+
+//============  =====================================
+//Energy calibration:     factor1*x + factor0
+
+//                                                               factor0,              factor1  =====
+//------------------- strip_detectorA ---------------------------
+
+strip_detectorA_plate_x_00_energy_cal_factors      0           1
+strip_detectorA_plate_x_01_energy_cal_factors      -10      0.9
+... etc
+
+The numbers  are so far fake.
+Using these numbers, the partitular calibrated values will be calculated like this
+
+strip_detectorA_plate_x_00_energy_cal = (strip_detectorA_plate_x_00_energy_raw * 1) + 0
+
+strip_detectorA_plate_x_01_energy_cal = (strip_detectorA_plate_x_01_energy_raw * 0.9) - 10
+
+--------------
+
+ To see how good your stri detector is - you have also a statistics spectrum called "fan".
+ It is panoramic view on the activity of all strips of one strip detector
+
+ The spectrum is called for example
+
+ strip_detectorA_plate_x_fan.spc
+
+ If some strip delivers non-zero value - it is considered as "fired". In the particular channel of the fan spectrum
+ the contents is incremented.
+ If the strip nr 00 fires - the channel 0 is incremented
+ If the strip nr 01 fires - the channel 10 is incremented
+ If the strip nr 02 fires - the channel 20 is incremented
+ If the strip nr 03 fires - the channel 30 is incremented
+ ...
+ If the strip nr 29 fires - the channel 290 is incremented
+ If the strip nr 30 fires - the channel 300 is incremented
+ If the strip nr 31 fires - the channel 310 is incremented
+
+ As you can have some noise in your data, you may define a "threshold" value, actually even
+ a "gate". Only the energies which will be above the threshold (inside the gate) are considered
+ as sensible.
+
+---------------
+You can definie these thresholds (gates) in the file    options/strip_detector_settings.txt
+
+  Here you see for example such a line
+
+strip_detectorA_x_energy_gate    200      4096
+
+This means, that we define the threshold for all the strips of the detector A, as 200 (till 4096).
+
+Thresholds work on calibrated energy values. It is common to all the strips of one Strip Detector.
+---------------
+
+You can see another fan spectrum
+ strip_detectorA_plate_x_fan_above_thresholds.spc
+
+ where we include only strips which fired with "proper, sensible" energy.
+
+----------------
+If later on, you would like to calculate position where - on the whole strip detector - was the hit,
+only these, 'sensible' energies are used for calculation.
+
+-----------------
+
+There is also a spectrum which tells the multiplicity of strips which fired. You have also the version
+with the 'threshold condition'.
+
+ !data_to_sort/exadc_pc1203_r465.i0
+
+###############################################################################################################################
+Hi Jurek!
+
+
+!!!!!!!!!!!!!!!!!!!
+1) Data read via socket. It is already on the list of ToDos and we will
+need it for the next test. The ideal situation would be to have the
+possibility to choose between reading from socket (on-line analysis) or
+from file, as it is now (off-line analysis). Nicola and I will provide
+you a socket which you can read as soon as possible.
+
+I almost finished this. Unfortunately now the socket gives me only header (40 bytes)
+and zero bytes of useful data. So I could not test it precisely. Let me know, if there
+will be a chance for a sensible data coming from the socket.
+
+
+!!!!!!!!!!!!
+2) Visualization of the amplitude of all the signals. I attach you a
+picture to clarify what I mean. In practice I would like to see each and
+all the 8 samples from each and all the 32 channels in one picture, per
+event (so a plot of 256 channels in x-axis, the y-axis can be
+normalized). This means that every X seconds you show the "real output"
+of the ADC, so one can see it in "real time". Of course it makes sense
+only when data is taken from socket.
+
+It is not clear for me what you want.
+Explain me:
+a) what should be the name of the spectrum
+b) what should be the range (from, to) and how
+many channels.
+(For example  From -200 to 4000, devided by 1000 channels (bins))
+
+c) which signal will increment this spectrum. Is it a one signal
+or many signals?
+I mean: the incrementation happens every event; what from the event
+should be used to increment this spectrum?
+
+Is it one spectrum contributed by many signals, or many spectra?
+
+
+3) Negative x-axis of the Spectrum. Now spectra go from 0 to 8191 but
+sometimes I need to capsize a spectrum with respect to a certain value,
+so I need the negative values (even temporarily). If I try to do it now
+I don't see any resulting spectrum because probably the program discards
+negative values.
+
+There is a different approach.
+But which spectrum - for example you need to watch in negative range?
+
+
+
+4) If it is possible I would like to have only EXOTIC spectra in
+./spectra/ directory. This way I will see only EXOTIC spectra in the
+dialog window from where I load spectra. Does the spy program always
+create all other spectra?
+
+I removed many of them, but not all. The reason why they are still there
+is that - forgive me saying so - our physicists seems to me not knowing
+what the modern software can do for them.
+I asked them to write to me something about their expermiment equipment,
+but they never did.
+So far - the program uses an "electronic engineer point of view".
+We are just looking at signals. But finally it should be physics, which is seen
+on the screen. They never told me what physics it will be.
+This is why I keep all these spectra because I think, that most probably
+they will need them, even if they do not know (and tell) this yet.
+
+
+
+5) Custom names of Spectra. Is there a way to customize spectra file names?
+
+There is a better tool: while you are working, you can create your own
+spectrum and give it your favourite name, range, etc. I will show you this
+by skype.
+
+
+
+
+I hope I was clear, if you have doubt or comments please tell me.
+I have put some huge data files in
+pc647:/home/grebosz/pietro/exotic_data/ . They have been taken with a
+striped silicon detector connected to channel 7 of ADC, so you see
+useful spectra on "detector G" .spc files. You can use these files for
+making tests.
+
+Thanks,
+ciao
+
+pietro
+
+--
+ing. Pietro Molini
+
+

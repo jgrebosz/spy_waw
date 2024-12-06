@@ -1,0 +1,152 @@
+============================================================
+How to compile the spy program
+============================================================
+
+To be able to compile the spy program you must have installed
+the ROOT program and the go4 program.
+
+if you are not sure, just type go4. If the GO4 program does not start
+- you must install it correctly
+(How to do it: See the "Section B" below)
+
+
+=========================================
+Section A
+How to compile and install the spy
+=========================================
+
+1. Download the last version of spy
+It is available as *.tar file, or *.gz file
+from the following directory
+
+/misc/rising/jurek/sources/spy
+
+2. Create on your computer the directory sources/spy
+and unpack there - the spy sources.
+If it is *tar file, you do it with a command
+
+    tar -xvf  *.tar
+
+If it is *.gz file, the command is similar  (one 'z' more)
+
+    tar -zxvf *.tar
+
+Now you are able to compile, but just to be sure, type:
+go4
+If the GO4 program will not start, you installed it wrongly (see section B)
+If the Go4 program starts, just finish it and
+now you are ready to compile the spy
+
+3. Type
+
+   make clean
+
+4. Type
+
+   make all
+
+5. If your compilation is successful - the result will be the files:
+
+spy
+liAC4UserAnalisis.so
+liAC4UserAnalisis.so.3.3.01  <-- where this numer is the number of Go4 version you have currently
+
+6. You can start the spy just by typing
+
+./spy
+
+7. If it does not starts correcly, but you were able to start Go4 program, it means that
+the operation system does not find the libraries:
+  liAC4UserAnalisis.so
+  liAC4UserAnalisis.so.3.3.01  
+The secret is, that the libraries are searched in all directories which are listed
+in the environment variable called LD_LIBRARY_PATH
+You can check them just by typing
+echo $LD_LIBRARY_PATH 
+
+Actually this is not a problem yet, because you are going to run the spy in different directory:
+just where your experiment data are placed.
+
+So you have the choice
+a) Put the files 
+   spy
+   liAC4UserAnalisis.so
+   liAC4UserAnalisis.so.*
+in the directory ~/bin
+b) or put them in the directory where is your experiment data.
+Anyway you need such a changes in your .bashrc file
+ 
+
+export PATH=./:~/bin:$PATH
+export LD_LIBRARY_PATH=./:~/bin:$LD_LIBRARY_PATH
+
+9. Now you can go to your directory with your experiment and
+start the spy
+
+   spy one_file_to_sort.lmd
+or 
+   spy "many_file_to_sort*.lmd"    <--- 'star' is possible, but note the " " in such a case
+
+or
+   spy  @list_of_files_to_sort.txt
+
+NOTE: you can not run the spy just "anywhere". It must be the directory which has
+all subdirectories needed (containing the lookup tables, calibrations, etc.)
+
+=====================================
+Section B
+How to Install ROOT
+=====================================
+
+1. upack the sources to some directory (for example root_inst)
+2. Make the another directory, where you are planing to have the result
+(for example  root_dir)
+
+3.
+export ROOTSYS=path just created root_dir directory
+
+4. go to the source directory root_inst
+
+5.
+./configure
+make
+make install
+
+6. In your .bashrc file put
+
+export ROOTSYS=/home/grebosz/root_inst  <-- put your version of the path here
+export PATH=$ROOTSYS/bin:$PATH
+export LD_LIBRARY_PATH=$ROOTSYS/lib:$LD_LIBRARY_PATH
+
+7. execute this script
+8. Type
+root
+just to be sure if all works OK.
+You can leave root using the command:
+.q
+
+=====================================
+Section C
+How to Install GO4
+=====================================
+
+1. Download it from go4.gsi.de
+2. unpack in some directory (the result will be also in the same directory)
+
+3. go to this directory and type
+. go4.login
+
+4.
+make clean
+make all
+
+5. After successful compilation edit the file go4login.sh
+Just put the proper path to the go4 directory, root directory
+
+6. In your .bashrc file (main directory) put a command which
+executes the file go4login.sh
+
+
+
+      
+   

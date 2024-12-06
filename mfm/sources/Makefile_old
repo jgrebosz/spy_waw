@@ -1,0 +1,168 @@
+
+# parametrage  de la variable ARCH par lancement 
+
+
+ifndef NO_MFMXML
+ifeq ($(TINYXMLLIBDIR),)
+TINYXMLIB 	    := -ltinyxml
+TINYXMLIB_O 	:= 
+else
+TINYXMLIB 	    :=
+TINYXMLIB_O 	:= $(TINYXMLLIBDIR)/tinystr.o  $(TINYXMLLIBDIR)/tinyxmlerror.o  $(TINYXMLLIBDIR)/tinyxml.o  $(TINYXMLLIBDIR)/tinyxmlparser.o 
+endif
+else
+XMLOPT = -DNO_MFMXML
+endif
+
+LIBDIR        := ./
+
+CXX           =
+ObjSuf        = o
+SrcSuf        = C
+SrcSuf2       = cpp
+SrcSuf3       = c
+
+ExeSuf        =
+DllSuf        = so
+OutPutOpt     = -o
+
+ARCH = $(shell uname -m)  
+ifeq ($(ARCH),i686  )
+ARCH = i686
+endif
+ifeq ($(ARCH),i686 )
+ARCH = i686
+endif
+ARCH = $(shell uname -m)  
+ifeq ($(ARCH),x86_64  )
+ARCH = x86_64
+endif
+ifeq ($(ARCH),x86_64 )
+ARCH = x86_64
+endif
+
+ifeq ($(ARCH),i386  )
+ARCH = i686
+endif
+ifeq ($(ARCH),i386 )
+ARCH = i686
+endif
+
+CXX	= g++ 
+LD 	= g++ 
+ifeq ($(COMPILER),CLANG)
+CXX	= clang++	
+LD 	= clang++	
+endif
+
+ifeq ($(ARCH),i686)
+# Linux with egcs, gcc 2.9x, gcc 3.x (>= RedHat 5.2)
+#CXXFLAGS      = -g -O2  -fPIC -Wall
+CXXFLAGS      =  -O2   -Wall -Wpadded 
+#SHAREOPT      = -shared -fPIC
+SHAREOPT      = -shared 
+#LDFLAGS       = -g  -O   -lpthread 
+LDFLAGS       =   -O 
+endif
+
+ifeq ($(ARCH),x86_64)
+# Linux with egcs, gcc 2.9x, gcc 3.x (>= RedHat 5.2)
+CXXFLAGS      = -g -O2  -fPIC -Wall -pthread -m64 -Wpadded -Wno-overloaded-virtual 
+#CXXFLAGS      =  -O  -fPIC -Wall
+SHAREOPT      = -shared -fPIC
+LDFLAGS       = -g  -O   -lpthread 
+
+endif
+
+ifeq ($(ARCH),macosx)  
+CXXFLAGS      = -Wpadded -Wpadded -Wno-overloaded-virtual 
+SHAREOPT      = -dynamiclib -undefined dynamic_lookup 
+LDFLAGS       =   
+MACOSX_F := -DMACOSX
+MACOSX_T := -D_SYS__SELECT_H_  -D__builtin_va_list=va_list
+endif
+
+
+ifeq ($(ARCH),macosx64)
+CXXFLAGS      = -m64 -Wpadded -Wno-overloaded-virtual 
+SHAREOPT      = -dynamiclib -undefined dynamic_lookup 
+LDFLAGS       = -m64 
+MACOSX_F := -DMACOSX
+MACOSX_T := -D_SYS__SELECT_H_  -D__builtin_va_list=va_list
+endif
+
+ifeq ($(CXX),)
+$(error -$(ARCH)- invalid architecture)
+endif
+
+LOCAL_FLAGS  := -I./include/  $(XMLOPT)
+INCFLAGS      =  $(ROOTCFLAGS) $(LOCAL_FLAGS) $(GANTAFLAGS) $(NETFLAGS)  $(CALIFLAGS) $(GRUCOREFLAGS) $(MACOSX_F) $(FASTERFLAG)
+CXXFLAGS     +=  $(INCFLAGS)
+
+MFMLIB         = libMFM.a
+
+#------------------------------------------------------------------------------------------------
+
+MFMLIB_O   =  MFMCommonFrame.o  MFMExogamFrame.o  MFMCoboFrame.o    MFMBasicFrame.o MFMXmlDataDescriptionFrame.o \
+			  MFMEbyedatFrame.o MFMBlobFrame.o    MFMOscilloFrame.o MFMMergeFrame.o   MFMScalerDataFrame.o\
+			  MFMMutantFrame.o MFMRibfFrame.o MFMCoboTopoFrame.o MFMHelloFrame.o MFMXmlFileHeaderFrame.o\
+ 			  MFMDiamantFrame.o MFMChimeraFrame.o  MFMBoxDiagFrame.o  MFMVamosICFrame.o MFMVamosPDFrame.o \
+ 			  MFMVamosTACFrame.o\
+ 			  MFMNedaFrame.o MFMNedaCompFrame.o MFMNumExoFrame.o MFMS3BaF2Frame.o  MFMS3AlphaFrame.o \
+ 			  MFMS3RuthFrame.o  MFMS3eGUNFrame.o  MFMS3SynchroFrame.o   \
+ 			  MError.o\
+			  DataPar.o DataGenParameters.o DataParameters.o DataScal.o DataScalers.o
+			  
+MFMLIB_C   =  MFMCommonFrame.cc  MFMExogamFrame.cc MFMCoboFrame.cc   MFMBasicFrame.cc MFMXmlDataDescriptionFrame.cc\
+			  MFMEbyedatFrame.cc MFMBlobFrame.cc   MFMOscilloFrame.o MFMMergeFrame.cc MFMScalerDataFrame.cc\
+			  MFMMutantFrame.cc MFMRibfFrame.cc MFMCoboTopoFrame.cc MFMHelloFrame.cc MFMXmlFileHeaderFrame.cc\
+			  MFMDiamantFrame.cc MFMChimeraFrame.cc MFMBoxDiagFrame.cc MFMVamosICFrame.cc MFMVamosPDFrame.cc  MFMVamosTACFrame.cc\
+			  MFMNedaFrame.cc  MFMNedaCompFrame.cc MFMNumExoFrame.cc MFMS3BaF2Frame.cc MError.cc \
+			  DataPar.cc DataGenParameters.cc DataParameters.cc DataScal.cc DataScalers.cc
+
+
+MFMLIB_H   =  MFMCommonFrame.h   MFMExgamFrame.h MFMCoboFrame.h MFMBasicFrame.h MFMXmlDataDescriptionFrame.h \
+	          MFMEbyedatFrame.h MFMBlobFrame.h MFMOscilloFrame.h  MFMScalerDataFrame.h \
+              MFMMutantFrame.h MFMRibfFrame.h MFMCoboTopoFrame.h MFMHello.h MFMXmlFileHeaderFrame.h\
+              MFMDiamantFrame.h MFMChimeraFrame.h MFMBoxDiagFrame.h MFMVamosICFrame.h MFMVamosPDFrame.h MFMVamosTACFrame.h\
+              MFMNedaFrame.h MFMNedaCompFrame.h MFMNumExoFrame.h MFMS3BaF2Frame.h MError.h \
+			  DataPar.h DataGenParameters.h DataParameters.h DataScal.h DataScalers.h
+
+
+.SUFFIXES: .$(SrcSuf) .$(ObjSuf) .$(DllSuf)
+
+all:	 MFMlib  MFMtest MFMlibso
+
+MFMlib:   	$(MFMLIB_O) 
+		$(AR)   -sru libMFM.a $(MFMLIB_O)  $(TINYXMLIB_O)
+		@echo "$@ done"
+
+MFMlibso:   	$(MFMLIB_O) 
+		$(LD)   -shared -o libMFM.so $(MFMLIB_O)  $(TINYXMLIB_O)
+		@echo "$@ done"
+		
+MFMtest.o : MFMtest.cc 
+	g++ -g -fPIC -c MFMtest.cc -o MFMtest.o $(XMLOPT)
+	
+MFMFileTest.o : MFMFileTest.cc 
+	g++ -g -fPIC -c MFMFileTest.cc -o MFMFileTest.o 
+
+MFMtest:   MFMtest.o
+		$(LD)   $^  $(LDFLAGS)  $(LOCAL_FLAGS) libMFM.a $(TINYXMLIB)  $(OutPutOpt)  $@.exe 
+		@echo "$@ done"
+		
+MFMFileTest:   MFMFileTest.o
+		$(LD)   $^  $(LDFLAGS)  $(LOCAL_FLAGS) libMFM.a  $(TINYXMLIB) $(OutPutOpt)  $@.exe 
+		@echo "$@ done"		
+					
+clean :  
+		@rm -rf *.o *.a *.xml html latex   *.exe mfmfile.dat libMFM.so
+
+info:   
+		@echo "--------ARCH------------"
+		@echo $(ARCH)     
+		@echo "--------MFMLIB_O------------"
+		@echo $(MFMLIB_O)
+		@echo "-------CXX------------"
+		@echo $(CXX)
+		@echo "---------------------------------"

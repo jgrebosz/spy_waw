@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="MFM_Diamant"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\sources\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MFMtest">
+				<Option output="/home/grebosz/zro/waw/moj_diamant/mfm/MFMtest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/sources"/>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/tinyxml"/>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 MFMtest"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MFMtest/fast">
+				<Option output="/home/grebosz/zro/waw/moj_diamant/mfm/MFMtest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/sources"/>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/tinyxml"/>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 MFMtest/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MFM_Diamant">
+				<Option output="/home/grebosz/zro/waw/moj_diamant/mfm/libMFM_Diamant.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/sources"/>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/tinyxml"/>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 MFM_Diamant"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MFM_Diamant/fast">
+				<Option output="/home/grebosz/zro/waw/moj_diamant/mfm/libMFM_Diamant.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/sources"/>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/tinyxml"/>
+					<Add directory="/home/grebosz/zro/waw/moj_diamant/mfm/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 MFM_Diamant/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/home/grebosz/zro/waw/moj_diamant/mfm"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/grebosz/zro/waw/moj_diamant/mfm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/DataGenParameters.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/DataGenParameters.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/DataPar.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/DataPar.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/DataParameters.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/DataParameters.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/DataScal.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/DataScal.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/DataScalers.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/DataScalers.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MError.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MError.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMBasicFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMBasicFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMBlobFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMBlobFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMBoxDiagFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMBoxDiagFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMChimeraFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMChimeraFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMCoboFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMCoboFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMCoboTopoFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMCoboTopoFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMCommonFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMCommonFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMDiamantFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMDiamantFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMEbyedatFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMEbyedatFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMExogamFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMExogamFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMFileTest.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMHelloFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMHelloFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMMergeFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMMergeFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMMutantFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMMutantFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMNedaCompFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMNedaCompFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMNedaFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMNedaFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMNumExoFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMNumExoFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMOscilloFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMOscilloFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMReaGenericFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMReaGenericFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMReaScopeFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMReaScopeFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMRibfFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMRibfFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMS3AlphaFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMS3AlphaFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMS3BaF2Frame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMS3BaF2Frame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMS3RuthFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMS3RuthFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMS3SynchroFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMS3SynchroFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMS3eGUNFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMS3eGUNFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMScalerDataFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMScalerDataFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMVamosICFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMVamosICFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMVamosPDFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMVamosPDFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMVamosTACFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMVamosTACFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMXmlDataDescriptionFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMXmlDataDescriptionFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMXmlFileHeaderFrame.cc">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMXmlFileHeaderFrame.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMtest.cc">
+			<Option target="MFMtest"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/tinyxml/tinystr.cpp">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/tinyxml/tinystr.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/tinyxml/tinyxml.cpp">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/tinyxml/tinyxml.h">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/tinyxml/tinyxmlerror.cpp">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/tinyxml/tinyxmlparser.cpp">
+			<Option target="MFM_Diamant"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/grebosz/zro/waw/moj_diamant/mfm/sources/MFMlib.in">
+			<Option virtualFolder="CMake Files\sources\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,8 @@
+/home/grebosz/zro/waw/moj_diamant/mfm/CMakeFiles/install/strip.dir
+/home/grebosz/zro/waw/moj_diamant/mfm/CMakeFiles/install/local.dir
+/home/grebosz/zro/waw/moj_diamant/mfm/CMakeFiles/MFMtest.dir
+/home/grebosz/zro/waw/moj_diamant/mfm/CMakeFiles/MFM_Diamant.dir
+/home/grebosz/zro/waw/moj_diamant/mfm/CMakeFiles/install.dir
+/home/grebosz/zro/waw/moj_diamant/mfm/CMakeFiles/edit_cache.dir
+/home/grebosz/zro/waw/moj_diamant/mfm/CMakeFiles/rebuild_cache.dir
+/home/grebosz/zro/waw/moj_diamant/mfm/CMakeFiles/list_install_components.dir
